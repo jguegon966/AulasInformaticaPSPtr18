@@ -17,7 +17,7 @@ public class CarritoTablets
     @Column(length = 3, nullable = false)
     private int numeroTablets;
 
-    @Column(length = 1)
+    @Column(length = 1, nullable = false)
     private int planta;
 
     public CarritoTablets()

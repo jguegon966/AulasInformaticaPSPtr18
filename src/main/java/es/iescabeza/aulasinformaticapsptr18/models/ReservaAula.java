@@ -1,9 +1,6 @@
 package es.iescabeza.aulasinformaticapsptr18.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -12,16 +9,20 @@ import java.util.Date;
 public class ReservaAula
 {
 
-    @Id
-    @Column(length = 10, nullable = false)
-    private Long idProfesor;
+    @EmbeddedId
+    private ReservaAulaId reservaAulaId;
 
-    @Id
-    @Column(length = 10, nullable = false)
-    private Long idAula;
+    @ManyToOne
+    @JoinColumn(name = "id_profesor")
+    @MapsId("idProfesor")
+    private Profesor idProfesor;
 
-    @Id
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_aula_informatica")
+    @MapsId("idAulaInformaatica")
+    private AulaInformatica idAulaInformatica;
+
+    @MapsId("fecha")
     private Date fecha;
 
     public ReservaAula()
@@ -29,20 +30,20 @@ public class ReservaAula
         // Implementacion vacia
     }
 
-    public Long getIdProfesor() {
+    public Profesor getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(Long idProfesor) {
+    public void setIdProfesor(Profesor idProfesor) {
         this.idProfesor = idProfesor;
     }
 
-    public Long getIdAula() {
-        return idAula;
+    public AulaInformatica getIdAulaInformatica() {
+        return idAulaInformatica;
     }
 
-    public void setIdAula(Long idAula) {
-        this.idAula = idAula;
+    public void setIdAulaInformatica(AulaInformatica idAulaInformatica) {
+        this.idAulaInformatica = idAulaInformatica;
     }
 
     public Date getFecha() {
@@ -52,5 +53,4 @@ public class ReservaAula
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
 }

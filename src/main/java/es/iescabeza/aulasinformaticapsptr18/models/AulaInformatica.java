@@ -14,10 +14,10 @@ public class AulaInformatica
     @Column(length = 10)
     private Long id;
 
-    @Column(length = 3)
+    @Column(length = 3, nullable = false)
     private int numeroAula;
 
-    @Column(length = 1)
+    @Column(length = 1, nullable = false)
     private int planta;
 
     public AulaInformatica()
