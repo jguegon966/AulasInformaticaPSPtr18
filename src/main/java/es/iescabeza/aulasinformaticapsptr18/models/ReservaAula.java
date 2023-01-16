@@ -22,12 +22,17 @@ public class ReservaAula
     @MapsId("idAulaInformaatica")
     private AulaInformatica idAulaInformatica;
 
-    @MapsId("fecha")
-    private Date fecha;
-
     public ReservaAula()
     {
         // Implementacion vacia
+    }
+
+    public ReservaAulaId getReservaAulaId() {
+        return reservaAulaId;
+    }
+
+    public void setReservaAulaId(ReservaAulaId reservaAulaId) {
+        this.reservaAulaId = reservaAulaId;
     }
 
     public Profesor getIdProfesor() {
@@ -44,13 +49,5 @@ public class ReservaAula
 
     public void setIdAulaInformatica(AulaInformatica idAulaInformatica) {
         this.idAulaInformatica = idAulaInformatica;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
     }
 }

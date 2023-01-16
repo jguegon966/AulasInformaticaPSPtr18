@@ -1,9 +1,6 @@
 package es.iescabeza.aulasinformaticapsptr18.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -12,39 +9,48 @@ import java.util.Date;
 public class ReservaCarritoTablets
 {
 
-    @Id
-    @Column(length = 10)
-    private Long idProfesor;
+    @EmbeddedId
+    private ReservaCarritoTabletsId reservaCarritoTabletsId;
 
-    @Id
-    @Column(length = 10)
-    private Long idCarritoTablets;
+    @ManyToOne
+    @JoinColumn(name = "id_profesor")
+    @MapsId("idProfesor")
+    private Profesor idProfesor;
 
-    @Column(length = 50)
+    @ManyToOne
+    @JoinColumn(name = "id_carrito_tablets")
+    @MapsId("idCarritoTablets")
+    private CarritoTablets idCarritoTablets;
+
+    @Column
     private String ubicacionPrestamo;
-
-    @Id
-    @Column(nullable = false)
-    private Date fecha;
 
     public ReservaCarritoTablets()
     {
         // Implementacion vacia
     }
 
-    public Long getIdProfesor() {
+    public ReservaCarritoTabletsId getReservaCarritoTabletsId() {
+        return reservaCarritoTabletsId;
+    }
+
+    public void setReservaCarritoTabletsId(ReservaCarritoTabletsId reservaCarritoTabletsId) {
+        this.reservaCarritoTabletsId = reservaCarritoTabletsId;
+    }
+
+    public Profesor getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(Long idProfesor) {
+    public void setIdProfesor(Profesor idProfesor) {
         this.idProfesor = idProfesor;
     }
 
-    public Long getIdCarritoTablets() {
+    public CarritoTablets getIdCarritoTablets() {
         return idCarritoTablets;
     }
 
-    public void setIdCarritoTablets(Long idCarritoTablets) {
+    public void setIdCarritoTablets(CarritoTablets idCarritoTablets) {
         this.idCarritoTablets = idCarritoTablets;
     }
 
@@ -55,13 +61,4 @@ public class ReservaCarritoTablets
     public void setUbicacionPrestamo(String ubicacionPrestamo) {
         this.ubicacionPrestamo = ubicacionPrestamo;
     }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
 }

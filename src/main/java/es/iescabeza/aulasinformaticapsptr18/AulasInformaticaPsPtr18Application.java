@@ -6,7 +6,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableJpaRepositories
-@ComponentScan(basePackages = "es.iescabeza.aulasinformaticapsptr18")
 @SpringBootApplication
 public class AulasInformaticaPsPtr18Application {
 

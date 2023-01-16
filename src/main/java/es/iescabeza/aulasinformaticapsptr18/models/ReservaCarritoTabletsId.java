@@ -6,21 +6,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Embeddable
-public class ReservaAulaId implements Serializable
+public class ReservaCarritoTabletsId implements Serializable
 {
 
-    private static final long serialVersionUID = 143517546487453214L;
+    private static final long serialVersionUID = -156123789941234788L;
 
     private Long idProfesor;
 
-    private Long idAula;
+    private Long idCarritoTablets;
 
     private Date fecha;
-
-    public ReservaAulaId()
-    {
-        // Implementacion vacia
-    }
 
     public Long getIdProfesor() {
         return idProfesor;
@@ -30,12 +25,12 @@ public class ReservaAulaId implements Serializable
         this.idProfesor = idProfesor;
     }
 
-    public Long getIdAula() {
-        return idAula;
+    public Long getIdCarritoTablets() {
+        return idCarritoTablets;
     }
 
-    public void setIdAula(Long idAula) {
-        this.idAula = idAula;
+    public void setIdCarritoTablets(Long idCarritoTablets) {
+        this.idCarritoTablets = idCarritoTablets;
     }
 
     public Date getFecha() {

@@ -1,9 +1,6 @@
 package es.iescabeza.aulasinformaticapsptr18.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -12,39 +9,49 @@ import java.util.Date;
 public class ReservaCarritoPcs
 {
 
-    @Id
-    @Column(length = 10)
-    private Long idProfesor;
+    @EmbeddedId
+    private ReservaCarritoPcsId reservaCarrtitoPcsId;
 
-    @Id
-    @Column(length = 10)
-    private Long idCarritoPcs;
+    @ManyToOne
+    @JoinColumn(name = "id_profesor")
+    @MapsId("idProfesor")
+    private Profesor idProfesor;
+
+    @ManyToOne
+    @JoinColumn(name = "id_carrito_pcs")
+    @MapsId("idCarritoPcs")
+    private CarritoPc idCarritoPcs;
 
     @Column(length = 50)
     private String ubicacionPrestamo;
 
-    @Id
-    @Column(nullable = false)
-    private Date fecha;
 
     public ReservaCarritoPcs()
     {
         // Implementacion vacia
     }
 
-    public Long getIdProfesor() {
+    public ReservaCarritoPcsId getReservaCarrtitoPcsId() {
+        return reservaCarrtitoPcsId;
+    }
+
+    public void setReservaCarrtitoPcsId(ReservaCarritoPcsId reservaCarrtitoPcsId) {
+        this.reservaCarrtitoPcsId = reservaCarrtitoPcsId;
+    }
+
+    public Profesor getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(Long idProfesor) {
+    public void setIdProfesor(Profesor idProfesor) {
         this.idProfesor = idProfesor;
     }
 
-    public Long getIdCarritoPcs() {
+    public CarritoPc getIdCarritoPcs() {
         return idCarritoPcs;
     }
 
-    public void setIdCarritoPcs(Long idCarritoPcs) {
+    public void setIdCarritoPcs(CarritoPc idCarritoPcs) {
         this.idCarritoPcs = idCarritoPcs;
     }
 
@@ -55,13 +62,4 @@ public class ReservaCarritoPcs
     public void setUbicacionPrestamo(String ubicacionPrestamo) {
         this.ubicacionPrestamo = ubicacionPrestamo;
     }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
 }

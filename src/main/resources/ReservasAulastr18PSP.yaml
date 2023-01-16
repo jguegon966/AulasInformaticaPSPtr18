@@ -29,7 +29,7 @@ paths:
         500:
           description: Error del servidor
   /selectAula:
-    get:
+    post:
       operationId: selectAula
       description: seleccionar aula para reservar
       parameters:
@@ -46,7 +46,8 @@ paths:
         - name: fechaReservaAula
           description: fecha de reserva del aula, junto con la hora
           in: query
-          type: string
+          type: integer
+          format: int64
           required: true
       produces:
         - application/json
@@ -60,7 +61,7 @@ paths:
         500:
           description: Server Error
   /selectTablets:
-    get:
+    post:
       operationId: selectTablets
       description: seleccionar carrito tablets para reservar
       parameters:
@@ -82,7 +83,8 @@ paths:
         - name: fechaReservaAula
           description: fecha de reserva del aula, junto con la hora
           in: query
-          type: string
+          type: integer
+          format: int64
           required: true
       produces:
         - application/json
@@ -96,7 +98,7 @@ paths:
         500:
           description: Server Error
   /selectPcs:
-    get:
+    post:
       operationId: selectPcs
       description: seleccionar carrito pcs para reservar
       parameters:
@@ -118,7 +120,8 @@ paths:
         - name: fechaReservaAula
           description: fecha de reserva del aula, junto con la hora
           in: query
-          type: string
+          type: integer
+          format: int64
           required: true
       produces:
         - application/json
