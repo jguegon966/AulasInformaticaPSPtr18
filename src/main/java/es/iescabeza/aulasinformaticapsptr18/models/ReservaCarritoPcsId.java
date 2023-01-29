@@ -17,6 +17,11 @@ public class ReservaCarritoPcsId implements Serializable
 
     private Date fecha;
 
+    public ReservaCarritoPcsId()
+    {
+
+    }
+
     public Long getIdProfesor() {
         return idProfesor;
     }

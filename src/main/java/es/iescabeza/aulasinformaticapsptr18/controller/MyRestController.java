@@ -1,15 +1,24 @@
 package es.iescabeza.aulasinformaticapsptr18.controller;
 
+import es.iescabeza.aulasinformaticapsptr18.models.CarritoPc;
+import es.iescabeza.aulasinformaticapsptr18.repository.ICarritoPcRepository;
+import es.iescabeza.aulasinformaticapsptr18.service.CarritoPcService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/reservas", produces = {"application/json"})
 public class MyRestController
 {
+
+    @Autowired
+    CarritoPcService carritoPcService;
 
     public MyRestController()
     {
@@ -21,10 +30,11 @@ public class MyRestController
      * @return
      */
     @RequestMapping(method = RequestMethod.GET, value = "/allReservations")
-    public ResponseEntity<?> listaReservas()
+    public ResponseEntity<List<CarritoPc>> listaReservas()
     {
 
-        return null;
+        List<CarritoPc> carrosPc = carritoPcService.listaCarritoPc();
+        return new ResponseEntity<List<CarritoPc>>(carrosPc, HttpStatus.OK);
 
     }
 
