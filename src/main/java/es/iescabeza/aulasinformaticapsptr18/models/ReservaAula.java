@@ -17,11 +17,6 @@ public class ReservaAula
     @MapsId("idProfesor")
     private Profesor idProfesor;
 
-    @ManyToOne
-    @JoinColumn(name = "id_aula_informatica")
-    @MapsId("idAulaInformaatica")
-    private AulaInformatica idAulaInformatica;
-
     public ReservaAula()
     {
         // Implementacion vacia
@@ -43,11 +38,4 @@ public class ReservaAula
         this.idProfesor = idProfesor;
     }
 
-    public AulaInformatica getIdAulaInformatica() {
-        return idAulaInformatica;
-    }
-
-    public void setIdAulaInformatica(AulaInformatica idAulaInformatica) {
-        this.idAulaInformatica = idAulaInformatica;
-    }
 }

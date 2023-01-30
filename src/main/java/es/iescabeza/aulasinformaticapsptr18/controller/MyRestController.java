@@ -1,15 +1,14 @@
 package es.iescabeza.aulasinformaticapsptr18.controller;
 
-import es.iescabeza.aulasinformaticapsptr18.models.CarritoPc;
-import es.iescabeza.aulasinformaticapsptr18.repository.ICarritoPcRepository;
-import es.iescabeza.aulasinformaticapsptr18.service.CarritoPcService;
+import es.iescabeza.aulasinformaticapsptr18.models.*;
+import es.iescabeza.aulasinformaticapsptr18.service.AllReservasService;
+import es.iescabeza.aulasinformaticapsptr18.utils.TotalReservas;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -18,7 +17,7 @@ public class MyRestController
 {
 
     @Autowired
-    CarritoPcService carritoPcService;
+    private AllReservasService allReservasService;
 
     public MyRestController()
     {
@@ -30,11 +29,20 @@ public class MyRestController
      * @return
      */
     @RequestMapping(method = RequestMethod.GET, value = "/allReservations")
-    public ResponseEntity<List<CarritoPc>> listaReservas()
+    public ResponseEntity<TotalReservas> listaReservas()
     {
 
-        List<CarritoPc> carrosPc = carritoPcService.listaCarritoPc();
-        return new ResponseEntity<List<CarritoPc>>(carrosPc, HttpStatus.OK);
+        TotalReservas totalReservas = new TotalReservas();
+
+        List<ReservaAula> reservaAulas = allReservasService.listaReservaAula();
+        List<ReservaCarritoPcs> reservaCarritoPcs = allReservasService.listaReservaCarritoPc();
+        List<ReservaCarritoTablets> reservaCarritoTablets = allReservasService.listaReservaCarritoTablets();
+
+        totalReservas.setReservasAulas(reservaAulas);
+        totalReservas.setReservasCarritoPcs(reservaCarritoPcs);
+        totalReservas.setReservasCarritoTablets(reservaCarritoTablets);
+
+        return new ResponseEntity<TotalReservas>(totalReservas, HttpStatus.OK);
 
     }
 
