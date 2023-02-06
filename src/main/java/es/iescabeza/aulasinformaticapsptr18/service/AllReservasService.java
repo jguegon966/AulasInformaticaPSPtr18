@@ -12,6 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Clase encargada de llamar a los repositorios de reservas y los busca en la base de datos
+ */
 @Service
 @Transactional
 public class AllReservasService

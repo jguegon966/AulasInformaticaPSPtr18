@@ -15,16 +15,23 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Clase controler encargada de definir y hacer funcionar cada EndPoint
+ */
 @RestController
 @RequestMapping(value = "/reservas", produces = {"application/json"})
 public class MyRestController
 {
+
+    //Listas para almacenar las reservas en las sesiones
 
     List<ReservaAula> listaReservasAulas = new ArrayList<>();
 
     List<ReservaCarritoTablets> listaReservasCarritoTablets = new ArrayList<>();
 
     List<ReservaCarritoPcs> listaReservasCarritoPcs = new ArrayList<>();
+
+    //atributos que referencian los repositorios con autowired
 
     @Autowired
     private AllReservasService allReservasService;
@@ -50,6 +57,9 @@ public class MyRestController
     @Autowired
     private ICarritoPcRepository iCarritoPcRepository;
 
+    /**
+     * Constructor por defecto
+     */
     public MyRestController()
     {
         // Empty constructor because of Spring dependency
@@ -57,7 +67,7 @@ public class MyRestController
 
     /**
      * Visualizacion de las reservas
-     * @return
+     * @return las reservas que hay almacenadas en la base de datos
      */
     @RequestMapping(method = RequestMethod.GET, value = "/allReservations")
     public ResponseEntity<TotalReservas> listaReservas()
@@ -78,12 +88,12 @@ public class MyRestController
     }
 
     /**
-     * Seleccion de aulas
-     * @param sesion
-     * @param idProfesor
-     * @param idAula
-     * @param fechaReservaAula
-     * @return
+     * Seleccion de aulas para reservar
+     * @param sesion sesion
+     * @param idProfesor id del profesor que reserva
+     * @param idAula id del aula a reservar
+     * @param fechaReservaAula fecha en la que se reserva el aula (de tipo Long)
+     * @return devuelve un OK con el codigo 200 si la reserva se ha realizado correctamente
      */
     @RequestMapping(method = RequestMethod.POST, value = "/selectAula")
     public ResponseEntity<?> selectAula(HttpSession sesion,
@@ -129,13 +139,13 @@ public class MyRestController
     }
 
     /**
-     * Seleccion de carritos Tablets
-     * @param sesion
-     * @param idProfesor
-     * @param idCarritoTablets
-     * @param ubicacionPrestamoTablets
-     * @param fechaReservaAula
-     * @return
+     * Seleccion de carritos Tablets para reservar
+     * @param sesion sesion
+     * @param idProfesor id del profesor que reserva
+     * @param idCarritoTablets id del carrito de tablets a reservar
+     * @param ubicacionPrestamoTablets ubicacion del carrito donde se deja por ultima vez
+     * @param fechaReservaAula fecha en la que se desea reservar (de tipo Long)
+     * @return devuelve un OK con el codigo 200 si la reserva se ha realizado correctamente
      */
     @RequestMapping(method = RequestMethod.POST, value = "/selectTablets")
     public ResponseEntity<?> selectTablets(HttpSession sesion,
@@ -194,13 +204,13 @@ public class MyRestController
     }
 
     /**
-     * Seleccion de carritos PCs
-     * @param sesion
-     * @param idProfesor
-     * @param idCarritoPcs
-     * @param ubicacionPrestamoPcs
-     * @param fechaReservaAula
-     * @return
+     * Seleccion de carritos PCs que se desean reservar
+     * @param sesion sesion
+     * @param idProfesor id del profesor que hace la reserva
+     * @param idCarritoPcs id del carrito que se desea reservar
+     * @param ubicacionPrestamoPcs ubicacion donde se deja por ultima vez el carrito
+     * @param fechaReservaAula fecha de reserva (de tipo Long)
+     * @return devuelve un OK con el codigo 200 si la reserva se ha realizado correctamente
      */
     @RequestMapping(method = RequestMethod.POST, value = "/selectPcs")
     public ResponseEntity<?> selectPcs(HttpSession sesion,
@@ -256,9 +266,9 @@ public class MyRestController
     }
 
     /**
-     * Confirmacion de la seleccion
-     * @param sesion
-     * @return
+     * Confirmacion de la seleccion de las reservas
+     * @param sesion sesion
+     * @return devuelve un OK con el codigo 200 si la reserva se han confirmado las reservas correctamente
      */
     @RequestMapping(method = RequestMethod.POST, value = "/confirmReservation")
     public ResponseEntity<?> confirmarReserva(HttpSession sesion)
@@ -285,8 +295,11 @@ public class MyRestController
 
     }
 
-    // hacer 3 endpoints mas con cancelar carrito pc, tablets y aulas
-
+    /**
+     * Endpoint encargado de cancelar la sesion con las reservas
+     * @param sesion sesion
+     * @return devuelve un OK con el coodigo de respuesta 200 si se ha cancelado correctamente la sesion
+     */
     @RequestMapping(method = RequestMethod.POST, value = "/cancelReservation")
     public ResponseEntity<?> cancelarSesiones(HttpSession sesion)
     {
@@ -297,6 +310,14 @@ public class MyRestController
 
     }
 
+    /**
+     * Endpoint encargado de eliminar una reserva de un Aula
+     * @param sesion sesion
+     * @param idProfesor id del profesor que reserva
+     * @param idAula id del aula de la reserva para eliminar
+     * @param fechaReservaAula fecha en la que se reservó el aula (de tipo Long)
+     * @return devuelve un OK con el codigo 200 si la reserva se ha eliminado correctamente
+     */
     @RequestMapping(method = RequestMethod.DELETE, value = "/deleteReservaAula")
     public ResponseEntity<?> deleteReservaAula(HttpSession sesion,
                                         @RequestParam(value = "idProfesor", required = true) final Long idProfesor,
@@ -334,6 +355,15 @@ public class MyRestController
 
     }
 
+    /**
+     * EndPoint encargado de eliminar una reserva de carrito de tablets
+     * @param sesion sesion
+     * @param idProfesor id del profesor que reservó
+     * @param idCarritoTablets id del carrito reservado
+     * @param ubicacionPrestamoTablets ubicacion donde se dejó el carro por ultima vez
+     * @param fechaReservaAula fecha en la que se reservó
+     * @return devuelve un OK con el codigo 200 si se ha eliminado correctamente
+     */
     @RequestMapping(method = RequestMethod.DELETE, value = "/deleteReservaCarroTablets")
     public ResponseEntity<?> deleteReservaCarroTablets(HttpSession sesion,
                                            @RequestParam(value = "idProfesor", required = true) final Long idProfesor,
@@ -384,6 +414,15 @@ public class MyRestController
 
     }
 
+    /**
+     * EndPoint encargado de eliminar una reserva de un carrito de Pcs
+     * @param sesion sesion
+     * @param idProfesor id del profesor que reservó
+     * @param idCarritoPcs id del carrito reservado
+     * @param ubicacionPrestamoPcs ubicacion donde se dejó el carrito por ultima vez
+     * @param fechaReservaAula fecha en la que se hizo la reserva
+     * @return devuelve un OK con codigo 200 si se ha eliminado la reserva correctamente
+     */
     @RequestMapping(method = RequestMethod.POST, value = "/deleteReservaCarroPcs")
     public ResponseEntity<?> deleteReservaCarroPcs(HttpSession sesion,
                                        @RequestParam(value = "idProfesor", required = true) final Long idProfesor,
@@ -432,7 +471,5 @@ public class MyRestController
 
         return new ResponseEntity<String>("Reserva de carro de Pcs eliminada de la base de datos correctamente", HttpStatus.OK);
     }
-
-    //Y documenta algo que luego se te olvida
 
 }

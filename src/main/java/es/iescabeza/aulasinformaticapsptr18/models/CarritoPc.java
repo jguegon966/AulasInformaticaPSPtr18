@@ -5,10 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Clase entidad CarritoPc
+ */
 @Entity
 @Table(name = "carrito_pc")
 public class CarritoPc
 {
+
+    //Attributes
 
     @Id
     @Column(length = 10)
@@ -23,40 +28,53 @@ public class CarritoPc
     @Column(length = 50, nullable = false)
     private String sistemaOperativo;
 
+    /**
+     * Constructor por defecto
+     */
     public CarritoPc()
     {
         // Implementacion vacia
     }
 
-    public Long getId() {
+    //Getters and setters
+
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public int getNumeroPcs() {
+    public int getNumeroPcs()
+    {
         return numeroPcs;
     }
 
-    public void setNumeroPcs(int numeroPcs) {
+    public void setNumeroPcs(int numeroPcs)
+    {
         this.numeroPcs = numeroPcs;
     }
 
-    public int getPlanta() {
+    public int getPlanta()
+    {
         return planta;
     }
 
-    public void setPlanta(int planta) {
+    public void setPlanta(int planta)
+    {
         this.planta = planta;
     }
 
-    public String getSistemaOperativo() {
+    public String getSistemaOperativo()
+    {
         return sistemaOperativo;
     }
 
-    public void setSistemaOperativo(String sistemaOperativo) {
+    public void setSistemaOperativo(String sistemaOperativo)
+    {
         this.sistemaOperativo = sistemaOperativo;
     }
 

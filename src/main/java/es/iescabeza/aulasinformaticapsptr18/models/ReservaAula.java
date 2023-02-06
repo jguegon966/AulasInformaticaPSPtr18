@@ -2,13 +2,17 @@ package es.iescabeza.aulasinformaticapsptr18.models;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
-
+/**
+ * Clase entidad ReservaAula
+ */
 @Entity
 @Table(name = "reserva_aula")
 public class ReservaAula
 {
 
+    //Attributes
+
+    //referencia a la clase que genera tabla
     @EmbeddedId
     private ReservaAulaId reservaAulaId;
 
@@ -17,24 +21,33 @@ public class ReservaAula
     @MapsId("idProfesor")
     private Profesor idProfesor;
 
+    /**
+     * Constructor por defecto
+     */
     public ReservaAula()
     {
         // Implementacion vacia
     }
 
-    public ReservaAulaId getReservaAulaId() {
+    //Getters and setters
+
+    public ReservaAulaId getReservaAulaId()
+    {
         return reservaAulaId;
     }
 
-    public void setReservaAulaId(ReservaAulaId reservaAulaId) {
+    public void setReservaAulaId(ReservaAulaId reservaAulaId)
+    {
         this.reservaAulaId = reservaAulaId;
     }
 
-    public Profesor getIdProfesor() {
+    public Profesor getIdProfesor()
+    {
         return idProfesor;
     }
 
-    public void setIdProfesor(Profesor idProfesor) {
+    public void setIdProfesor(Profesor idProfesor)
+    {
         this.idProfesor = idProfesor;
     }
 

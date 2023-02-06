@@ -8,6 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Clase encargada de buscar los carritosPc
+ */
 @Service
 @Transactional
 public class CarritoPcService

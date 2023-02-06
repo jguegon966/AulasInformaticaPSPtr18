@@ -5,10 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Clase entidad CarritoTablets
+ */
 @Entity
 @Table(name = "carrito_tablets")
 public class CarritoTablets
 {
+
+    //Attributes
 
     @Id
     @Column(length = 10)
@@ -20,32 +25,43 @@ public class CarritoTablets
     @Column(length = 1, nullable = false)
     private int planta;
 
+    /**
+     * Constructor por defecto
+     */
     public CarritoTablets()
     {
         // Implementacion vacia
     }
 
-    public Long getId() {
+    //Getters and setters
+
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public int getNumeroTablets() {
+    public int getNumeroTablets()
+    {
         return numeroTablets;
     }
 
-    public void setNumeroTablets(int numeroTablets) {
+    public void setNumeroTablets(int numeroTablets)
+    {
         this.numeroTablets = numeroTablets;
     }
 
-    public int getPlanta() {
+    public int getPlanta()
+    {
         return planta;
     }
 
-    public void setPlanta(int planta) {
+    public void setPlanta(int planta)
+    {
         this.planta = planta;
     }
 

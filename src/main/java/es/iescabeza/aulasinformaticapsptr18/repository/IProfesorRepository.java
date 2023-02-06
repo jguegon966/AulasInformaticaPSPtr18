@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
+/**
+ * Repositorio JPA de Profesor
+ */
 public interface IProfesorRepository extends JpaRepository<Profesor, Long>
 {
 

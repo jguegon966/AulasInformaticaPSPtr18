@@ -5,10 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Clase entidad Profesor
+ */
 @Entity
 @Table(name = "profesor")
 public class Profesor
 {
+
+    //Attributes
 
     @Id
     @Column(length = 10)
@@ -20,32 +25,43 @@ public class Profesor
     @Column(length = 50, nullable = false)
     private String apellidos;
 
+    /**
+     * Constructor por defecto
+     */
     public Profesor()
     {
         // Implementacion vacia
     }
 
-    public Long getId() {
+    //Getters and Setters
+
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public String getNombre() {
+    public String getNombre()
+    {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre)
+    {
         this.nombre = nombre;
     }
 
-    public String getApellidos() {
+    public String getApellidos()
+    {
         return apellidos;
     }
 
-    public void setApellidos(String apellidos) {
+    public void setApellidos(String apellidos)
+    {
         this.apellidos = apellidos;
     }
 }

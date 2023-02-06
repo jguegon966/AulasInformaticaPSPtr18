@@ -5,10 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Clase entidad Aula_informatica
+ */
 @Entity
 @Table(name = "aula_informatica")
 public class AulaInformatica
 {
+
+    //Attributes
 
     @Id
     @Column(length = 10)
@@ -20,32 +25,43 @@ public class AulaInformatica
     @Column(length = 1, nullable = false)
     private int planta;
 
+    /**
+     * Constructor por defecto
+     */
     public AulaInformatica()
     {
         // Implementacion vacia
     }
 
-    public Long getId() {
+    //Getters and Setters
+
+    public Long getId()
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
 
-    public int getNumeroAula() {
+    public int getNumeroAula()
+    {
         return numeroAula;
     }
 
-    public void setNumeroAula(int numeroAula) {
+    public void setNumeroAula(int numeroAula)
+    {
         this.numeroAula = numeroAula;
     }
 
-    public int getPlanta() {
+    public int getPlanta()
+    {
         return planta;
     }
 
-    public void setPlanta(int planta) {
+    public void setPlanta(int planta)
+    {
         this.planta = planta;
     }
 

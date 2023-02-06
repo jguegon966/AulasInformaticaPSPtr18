@@ -2,13 +2,17 @@ package es.iescabeza.aulasinformaticapsptr18.models;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
-
+/**
+ * Clase entidad ReservaCarritoTablets
+ */
 @Entity
 @Table(name = "reserva_carrito_tablets")
 public class ReservaCarritoTablets
 {
 
+    //Attributes
+
+    //Referencia a clase que genera tabla ReservaCarritoTabletsId
     @EmbeddedId
     private ReservaCarritoTabletsId reservaCarritoTabletsId;
 
@@ -25,40 +29,53 @@ public class ReservaCarritoTablets
     @Column
     private String ubicacionPrestamo;
 
+    /**
+     * Constructor por defecto
+     */
     public ReservaCarritoTablets()
     {
         // Implementacion vacia
     }
 
-    public ReservaCarritoTabletsId getReservaCarritoTabletsId() {
+    //Getters and Setters
+
+    public ReservaCarritoTabletsId getReservaCarritoTabletsId()
+    {
         return reservaCarritoTabletsId;
     }
 
-    public void setReservaCarritoTabletsId(ReservaCarritoTabletsId reservaCarritoTabletsId) {
+    public void setReservaCarritoTabletsId(ReservaCarritoTabletsId reservaCarritoTabletsId)
+    {
         this.reservaCarritoTabletsId = reservaCarritoTabletsId;
     }
 
-    public Profesor getIdProfesor() {
+    public Profesor getIdProfesor()
+    {
         return idProfesor;
     }
 
-    public void setIdProfesor(Profesor idProfesor) {
+    public void setIdProfesor(Profesor idProfesor)
+    {
         this.idProfesor = idProfesor;
     }
 
-    public CarritoTablets getIdCarritoTablets() {
+    public CarritoTablets getIdCarritoTablets()
+    {
         return idCarritoTablets;
     }
 
-    public void setIdCarritoTablets(CarritoTablets idCarritoTablets) {
+    public void setIdCarritoTablets(CarritoTablets idCarritoTablets)
+    {
         this.idCarritoTablets = idCarritoTablets;
     }
 
-    public String getUbicacionPrestamo() {
+    public String getUbicacionPrestamo()
+    {
         return ubicacionPrestamo;
     }
 
-    public void setUbicacionPrestamo(String ubicacionPrestamo) {
+    public void setUbicacionPrestamo(String ubicacionPrestamo)
+    {
         this.ubicacionPrestamo = ubicacionPrestamo;
     }
 }
