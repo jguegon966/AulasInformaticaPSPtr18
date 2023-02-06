@@ -433,11 +433,6 @@ public class MyRestController
         return new ResponseEntity<String>("Reserva de carro de Pcs eliminada de la base de datos correctamente", HttpStatus.OK);
     }
 
-    //implementa todos los metodos de delete en swagger que suspendes subnormal
-    //ademas de añadir en la base de datos por defecto unos carritos y aulas
-    //y acuerdate de hacer un txt con las instrucciones que debe seguir el profesor
     //Y documenta algo que luego se te olvida
 
 }
-
-

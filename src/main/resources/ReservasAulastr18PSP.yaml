@@ -137,13 +137,7 @@ paths:
   /confirmarReservation:
     post:
       operationId: confirmarReserva
-      description: confirma la reserva 
-      parameters:
-        - name: confirmation
-          description: confirmation to post the reservation
-          in: query
-          type: string
-          required: true
+      description: confirma la reserva
       responses:
         200:
           description: Confirm the post of reservation
@@ -153,3 +147,122 @@ paths:
           description: Error al introducir los parametros
         500:
           description: Server Error
+  /cancelarSesiones:
+    post:
+      operationId: cancelarSesion
+      description: cancelar la sesion
+      responses:
+        200:
+          description: Cancel the sesion of reservations
+        404:
+          description: System was not found
+        500:
+          description: Server Error
+  /deleteReservaAula:
+    delete:
+      operationId: deleteReservaAula
+      description: delete a reservation of an aula
+      parameters:
+        - name: idProfesor
+          description: identificador del profesor
+          in: query
+          type: integer
+          required: true
+        - name: idAula
+          description: identificador del aula
+          in: query
+          type: integer
+          required: true
+        - name: fechaReservaAula
+          description: fecha de reserva del aula, junto con la hora
+          in: query
+          type: integer
+          format: int64
+          required: true
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Returns a String with information of the delete
+        404:
+          description: System was not found
+        407:
+          description: Error al introducir los parametros
+        500:
+          description: Server Error
+  /deleteReservaTablets:
+    delete:
+      operationId: deleteReservaTablets
+      description: delete a reservation of a cart
+      parameters:
+        - name: idProfesor
+          description: identificador del profesor
+          in: query
+          type: integer
+          required: true
+        - name: idCarritoTablets
+          description: identificador del carrito de tablets
+          in: query
+          type: integer
+          required: true
+        - name: ubicacionPrestamoTablets
+          description: ubicacion del prestamo de donde se dejó la ultima vez el carrito
+          in: query
+          type: string
+          required: false
+        - name: fechaReservaAula
+          description: fecha de reserva del aula, junto con la hora
+          in: query
+          type: integer
+          format: int64
+          required: true
+      produces:
+        - application/json
+      responses:
+        200:
+          description: returns a String with information of a delete
+        404:
+          description: System was not found
+        407:
+          description: Error al introducir los parametros
+        500:
+          description: Server Error
+  /deleteReservaPcs:
+    delete:
+      operationId: deleteReservaPcs
+      description: delete a reservation of cart
+      parameters:
+        - name: idProfesor
+          description: identificador del profesor
+          in: query
+          type: integer
+          required: true
+        - name: idCarritoPcs
+          description: identificador del carrito de pcs
+          in: query
+          type: integer
+          required: true
+        - name: ubicacionPrestamoPcs
+          description: ubicacion del prestamo de donde se dejó la ultima vez el carrito
+          in: query
+          type: string
+          required: false
+        - name: fechaReservaAula
+          description: fecha de reserva del aula, junto con la hora
+          in: query
+          type: integer
+          format: int64
+          required: true
+      produces:
+        - application/json
+      responses:
+        200:
+          description: returns a String with information of a resevation
+        404:
+          description: System was not found
+        407:
+          description: Error al introducir los parametros
+        500:
+          description: Server Error
+  
+    
