@@ -16,3 +16,6 @@ Insert into profesor Values (2, "Guerrero Gonzalez", "Jesus");
 
 Con esto seria suficiente en cuanto a montar el inicio de los datos de la base de datos,
 ya estaria lista para empezar hacer reservas de carritos, aulas, etc...
+
+(Me he dado cuenta que al subir el proyecto al github y guardar, las tabulaciones de las llaves se comprimen
+ y se ponen como si no hubiese tabulado el proyecto, para tenerlo en cuenta)
