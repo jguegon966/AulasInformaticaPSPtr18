@@ -19,17 +19,11 @@ public class SpringSecurityConfig
 
         http.authorizeHttpRequests()
 
-                .requestMatchers("reservas/allReservations",
-                        "reservas/selectAula", "reservas/selectTablets", "reservas/selectPcs",
-                        "reservas/confirmReservation", "reservas/cancelReservation", "reservas/deleteReservaAula",
-                        "reservas/deleteReservaCarroTablets", "reservas/deleteReservaCarroPcs").hasAnyRole("ADMIN", "USER")
-                .requestMatchers("reservas/allReservations",
-                        "reservas/selectAula", "reservas/selectTablets", "reservas/selectPcs",
-                        "reservas/confirmReservation", "reservas/cancelReservation", "reservas/deleteReservaAula",
-                        "reservas/deleteReservaCarroTablets", "reservas/deleteReservaCarroPcs").hasAnyRole("USER", "ADMIN")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
+                .requestMatchers("/reservas/allReservations",
+                        "/reservas/selectAula", "/reservas/selectTablets", "/reservas/selectPcs",
+                        "/reservas/confirmReservation", "/reservas/cancelReservation", "/reservas/deleteReservaAula",
+                        "/reservas/deleteReservaCarroTablets", "/reservas/deleteReservaCarroPcs").hasAnyRole("USER", "ADMIN")
+                .and().formLogin()
                 .and().httpBasic();
 
         return http.build();
